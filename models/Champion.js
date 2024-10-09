@@ -1,7 +1,6 @@
 class Champion {
-
-  // todo : mirar la api de famdom con los objetos https://leagueoflegends.fandom.com/wiki/Module:ItemData/data
-  // todo : añadir la api de famdom con las habilidades https://leagueoflegends.fandom.com/wiki/Module:SpellData/data
+  
+  // info : https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data
 
   // ["Aatrox"] = {
   //   ["id"]         = 266,
