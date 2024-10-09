@@ -5,11 +5,11 @@ const fs = require("fs");
 const champ_name = "Poppy"
 const skill_name = "Hammer Shock"
 
-  // const skillDataUrl = `https://leagueoflegends.fandom.com/wiki/Template:Data_${champ_name
-  //     .trim()
-  //     .replace(/ /g, '_')}/${skill_name.trim().replace(/ /g, '_')}?action=edit`;
+const skillDataUrl = `https://leagueoflegends.fandom.com/wiki/Template:Data_${champ_name
+.trim()
+.replace(/ /g, '_')}/${skill_name.trim().replace(/ /g, '_')}?action=edit`;
 
-  ; (async () => {
+(async () => {
   const raw = await fetchWiki("https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data");
   const x = moduleToJSON(raw);
   fs.promises.writeFile("championData.json", JSON.stringify(x || {}, null, 2))
@@ -53,9 +53,22 @@ function moduleToJSON(text) {
         //replaces [12] : with "12" :
         .replace(/\[(\d+)] : /g, `"$1" : `)
         //replaces -- with //
-        .replace(/--/g, '//'),
+        .replace(/--/g, '//')
+        //reemplaza el + por ",\nhp_lvl2 : " posible fuente de error futuro
+        .replace(/\+/, `,\n"hp_lvl2" : `)
+        // reemplaza 2/3 por 0.6666666666666666 (esto deba error con kled y skaarl, ya que por alguna razon la vida de skaarl venía en fracciones)
+        .replace(/(\d+)\s*\/\s*(\d+)/g, (match, p1, p2) => {
+          const result = parseFloat(p1) / parseFloat(p2);
+          return result.toString();
+        })
     );
   }
   // return parsed JSON as a javascript object.
   return JSON5.parse(results.join(""));
 }
+
+{
+  hola : '1'
+}
+// ejecutar la busqueda
+
