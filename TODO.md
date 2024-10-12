@@ -7,7 +7,7 @@
 - [ ] Finalizar la clase champion
 
 ## Bugs por resolver
-- [✓] Error al acceder a la api en api/Champion.js
+- [x] Error al acceder a la api en api/Champion.js
 
 
 ## Mejoras
