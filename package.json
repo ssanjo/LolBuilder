@@ -10,7 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "jsdom": "^25.0.1",
-    "json5": "^2.2.3"
+    "jsdom": "25.0.1",
+    "json5": "2.2.3"
   }
 }
