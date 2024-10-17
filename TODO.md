@@ -13,6 +13,8 @@
 ## Mejoras
 
 ## Documentación
+- [ ] Modificar README
+- [ ] Revisar LICENSE
 
 ## Pruebas
 - [ ] Crear pruebas para todos los campeones
